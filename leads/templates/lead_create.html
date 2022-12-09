@@ -1,14 +1,15 @@
 {% extends './base.html' %}
 
 {% block content %}
-<a class="lead-url" href="{% url 'leads:leads' %}">Go back to leads</a>
-<hr>
-<section>
-<h1>Create a new lead</h1>
-<form action="" method="post">
+<a  href="{% url 'leads:leads' %}" class="inline-block px-6 py-2.5 bg-transparent text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-gray-100 focus:text-blue-700 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 active:text-blue-800 transition duration-300 ease-in-out mt-12">Go back to leads</a>
+<section  class="mx-auto max-w-xl px-4 py-16 sm:px-6 lg:px-8 shadow my-6">
+<h1 class="text-2xl font-bold sm:text-3xl text-center mb-12">Create a new lead</h1>
+<form action="" method="post" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
     {% csrf_token %}
     {{form.as_p}}
-<button type="submit">Submit</button>
+    <section>
+        <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5">Submit</button>
+    </section>
 </form>
 </section>
 {% endblock%}

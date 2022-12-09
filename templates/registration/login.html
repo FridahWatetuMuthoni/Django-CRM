@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="post" class="mx-auto mt-8 mb-0 max-w-lg space-y-4 shadow px-14 py-24 mt-24">
+    {% csrf_token%}
+    {{form.as_p}}
+    <section>
+            <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-6">Submit</button>
+    </section>
+</form>
+{% endblock %}
