@@ -126,3 +126,5 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'leads:leads'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'

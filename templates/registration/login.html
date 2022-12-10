@@ -3,9 +3,49 @@
 {% block content %}
 <form action="" method="post" class="mx-auto mt-8 mb-0 max-w-lg space-y-4 shadow px-14 py-24 mt-24">
     {% csrf_token%}
+    <section class="mb-3">
+        {% if form.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-medium"></span> {{error}}
+        </div>
+
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-medium"></span> {{error}}
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </section>
     {{form.as_p}}
+    <section class="flex justify-between items-center mb-6">
+        <div class="form-group form-check mt-6 flex items-center ">
+
+            <input id="checked-checkbox" type="checkbox" value=""
+                class="mr-2 w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+            <label class="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember me</label>
+        </div>
+        <a href="{% url 'password_reset' %}" class="mt-6 text-indigo-500 inline-flex items-center">
+            Forgot Password
+        </a>
+    </section>
+
     <section>
-            <button type="submit" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-6">Submit</button>
+        <button type="submit"
+            class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-6">Login</button>
+    </section>
+    <section>
+        <p class="text-gray-800 mt-6 text-center">Don't have an account?
+            <a href="{% url 'signup' %}"
+                class="text-indigo-500 hover:text-indigo-600 focus:text-indigo-600 transition duration-200 ease-in-out">
+                Register</a>
+        </p>
+
     </section>
 </form>
 {% endblock %}

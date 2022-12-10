@@ -1,11 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.core.mail import send_mail
 from .models import Lead, Agent
-from .forms import LeadForm
+from .forms import LeadForm, CustomUserCreationForm
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+class Signup_View(CreateView):
+    template_name = 'registration/signup.html'
+    form_class = CustomUserCreationForm
+
+    def get_success_url(self):
+        return reverse('login')
 
 
 class Home_Page_View(TemplateView):
@@ -18,7 +25,7 @@ def home_page(request):
 """
 
 
-class Leads_List_view(ListView):
+class Leads_List_view(LoginRequiredMixin, ListView):
     template_name = 'leads_list.html'
     queryset = Lead.objects.all()
     context_object_name = 'leads'
@@ -33,7 +40,7 @@ class Leads_List_view(ListView):
 """
 
 
-class Leads_Detail_View(DetailView):
+class Leads_Detail_View(LoginRequiredMixin, DetailView):
     template_name = 'lead_detail.html'
     queryset = Lead.objects.all()
     context_object_name = "lead"
@@ -50,7 +57,7 @@ def leads_detail(request, pk):
 """
 
 
-class Leads_Create_View(CreateView):
+class Leads_Create_View(LoginRequiredMixin, CreateView):
     template_name = 'lead_create.html'
     form_class = LeadForm
 
@@ -60,7 +67,7 @@ class Leads_Create_View(CreateView):
             subject="The lead has been created",
             message="Go to the site to see the new lead",
             from_email="test@test.com",
-            recipient_list=['recipient@gmail.com']
+            recipient_list=[f'{self.request.user.email}']
         )
         return super(Leads_Create_View, self).form_valid(form)
 
@@ -86,7 +93,7 @@ def create_lead(request):
 """
 
 
-class Leads_Update_View(UpdateView):
+class Leads_Update_View(LoginRequiredMixin, UpdateView):
     template_name = 'lead_update.html'
     queryset = Lead.objects.all()
     form_class = LeadForm
@@ -114,7 +121,7 @@ def update_lead(request, pk):
 """
 
 
-class Leads_Delete_View(DeleteView):
+class Leads_Delete_View(LoginRequiredMixin, DeleteView):
     queryset = Lead.objects.all()
 
     def get_success_url(self):
