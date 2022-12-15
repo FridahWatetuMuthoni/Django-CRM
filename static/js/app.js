@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     const csrf_token = $("input[name=csrfmiddlewaretoken]").val()
     
-    //################### adding a click event to delete an item ########################
+    //################### adding a click event to delete a Lead ########################
     $('#delete').on('click', (e) => {
         e.preventDefault()
         const id = $('#delete').data('id')
@@ -17,6 +17,24 @@ $(document).ready(function () {
         window.location.replace('/leads/')
     } else {
         window.location.replace('/leads/')
+}
+    })
+//############################END ####################################
+//################### adding a click event to delete a Lead ########################
+    $('#delete-agent').on('click', (e) => {
+        e.preventDefault()
+        const id = $('#delete-agent').data('id')
+        const url =`/agents/delete/${id}/`
+        if (confirm('Are you sure you want to delete this agent from the database?')) {
+           $.ajax({
+                type: 'POST',
+                url: url,
+                data: { csrfmiddlewaretoken: csrf_token },
+                dataType: 'json',    
+           })
+        window.location.replace('/agents/')
+    } else {
+        window.location.replace('/agents/')
 }
     })
 //############################END ####################################

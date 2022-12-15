@@ -9,7 +9,9 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('leads/', include('leads.urls', namespace="leads")),
+    path('agents/', include('agents.urls', namespace='agents')),
     path('', Home_Page_View.as_view(), name="home"),
+    #################-Authentication System-#########################
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('signup/', Signup_View.as_view(), name="signup"),
@@ -21,6 +23,7 @@ urlpatterns = [
          auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
+    #################- END Authentication System-#########################
 
 ]
 

@@ -9,5 +9,12 @@ urlpatterns = [
     path('detail/<str:pk>/', views.Leads_Detail_View.as_view(), name="detail"),
     path('create', views.Leads_Create_View.as_view(), name='create'),
     path('update/<str:pk>/', views.Leads_Update_View.as_view(), name='update'),
-    path('delete/<str:pk>/', views.Leads_Delete_View.as_view(), name='delete')
+    path('delete/<str:pk>/', views.Leads_Delete_View.as_view(), name='delete'),
+    path('assign/<str:pk>/', views.AssignAgentView.as_view(), name='assign'),
+    path('categories', views.CategoryListView.as_view(), name='categories'),
+    path('category/details/<str:pk>/',
+         views.CategoryDetailView.as_view(), name='category_detail'),
+    path('category/update/<str:pk>/',
+         views.CategoryUpdateView.as_view(), name='category_update')
+
 ]
