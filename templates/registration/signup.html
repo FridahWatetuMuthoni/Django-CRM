@@ -1,31 +1,11 @@
 {% extends 'base.html' %}
+{% load tailwind_filters %}
+
 
 {% block content %}
 <form action="" method="post" class="mx-auto mt-8 mb-0 max-w-lg space-y-4 shadow px-14 py-24 mt-24">
     {% csrf_token%}
-    <section class="mb-3">
-        {% if form.errors %}
-        {% for field in form %}
-        {% for error in field.errors %}
-        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-            <span class="font-medium"></span> {{error}}
-        </div>
-
-        {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-            <span class="font-medium"></span> {{error}}
-        </div>
-
-        {% endfor %}
-        {% endif %}
-    </section>
-
-    {% for field in form %}
-    <p> {{field.label}}</p>
-    {{field}}
-    {% endfor %}
+    {{form|crispy}}
     <section>
         <button type="submit"
             class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-6">Signup</button>

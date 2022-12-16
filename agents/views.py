@@ -65,7 +65,8 @@ class AgentUpdateView(OrganiserAndLoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         organisation = self.request.user.userprofile
-        return Agent.objects.filter(organisation=organisation)
+        queryset = Agent.objects.filter(organisation=organisation)
+        return queryset
 
     def get_success_url(self):
         return reverse('agents:agents_list')
@@ -78,5 +79,3 @@ class AgentDeleteView(OrganiserAndLoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('agents:agents_list')
-
-

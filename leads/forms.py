@@ -9,7 +9,8 @@ User = get_user_model()
 class LeadForm(forms.ModelForm):
     class Meta:
         model = Lead
-        fields = ['first_name', 'last_name', 'age', 'agent']
+        fields = ['first_name', 'last_name', 'age', 'agent',
+                  'description', 'phone_number', 'email']
 
 
 class CustomUserCreationForm(UserCreationForm):

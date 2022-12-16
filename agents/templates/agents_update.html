@@ -1,4 +1,6 @@
 {% extends './base.html' %}
+{% load tailwind_filters %}
+
 
 {% block content %}
 <a href="{% url 'agents:agents_list' %}"
@@ -9,7 +11,7 @@
     <h1 class="text-2xl font-bold sm:text-3xl text-center mb-12">Update Agent</h1>
     <form action="" method="post" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form|crispy}}
         <section>
             <button type="submit"
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5">Submit</button>

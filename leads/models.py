@@ -43,9 +43,12 @@ class Lead(models.Model):
     # best way to name a related name is to base it on the model
     category = models.ForeignKey(
         'Category', related_name='leads', on_delete=models.SET_NULL, blank=True, null=True)
+    description = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    phone_number = models.CharField(max_length=20)
+    email = models.EmailField()
 
     #user_leads = LeadManger()
-    objects = models.Manager()
 
     def __str__(self):
         return self.first_name
