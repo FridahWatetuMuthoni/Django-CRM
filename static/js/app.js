@@ -40,7 +40,7 @@ $(document).ready(function () {
 //############################END ####################################
     
 //############################ ADDING CLASSES TO ALL MY FORMS ####################################
-const html_form_classes = ['block', 'w-full', 'p-3', 'rounded', 'focus:outline-none', 'focus:ring', 'focus:ring-opacity-25', 'focus:ring-violet-400', 'dark:bg-gray-50','mt-4','shadow']
+/*const html_form_classes = ['block', 'w-full', 'p-3', 'rounded', 'focus:outline-none', 'focus:ring', 'focus:ring-opacity-25', 'focus:ring-violet-400', 'dark:bg-gray-50','mt-4','shadow']
 
     $('input').each((element) => {
         html_form_classes.forEach((class_name) => {
@@ -58,7 +58,7 @@ const html_form_classes = ['block', 'w-full', 'p-3', 'rounded', 'focus:outline-n
             $('select').css('margin-top','20px')
         })
     })
-
+*/
     //############################END ####################################
 
 

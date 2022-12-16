@@ -37,3 +37,12 @@ for user in self.get_users(email):
                 "protocol": "https" if use_https else "http",
                 **(extra_email_context or {}),
             }
+
+## CRISPY FORMS
+
+pip install crispy-tailwind
+pip install django-crispy-forms
+
+CONFIGURATION
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
