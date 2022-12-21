@@ -8,14 +8,18 @@ env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
-
+# export debug and secret key in the terminal so that they are stored in the session
+# when you export them you dont need to read them anymore
+# environ.Env.read_env(BASE_DIR / '.env')
 # Take environment variables from .env file
+# only read the availables in the environment when in production else in the session
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
+    environ.Env.read_env(BASE_DIR / '.env')
 
 # False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
+print(READ_DOT_ENV_FILE)
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
@@ -78,14 +82,25 @@ WSGI_APPLICATION = 'djcrm.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+"""
+sqllite database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}"""
+# postgress database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
