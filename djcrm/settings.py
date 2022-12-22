@@ -15,11 +15,11 @@ env = environ.Env(
 # only read the availables in the environment when in production else in the session
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 if READ_DOT_ENV_FILE:
+    # Take environment variables from .env file
     environ.Env.read_env(BASE_DIR / '.env')
 
 # False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
-print(READ_DOT_ENV_FILE)
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
@@ -98,7 +98,7 @@ DATABASES = {
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT')
+        'PORT': env('DB_PORT'),
     }
 }
 
