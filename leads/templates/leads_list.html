@@ -51,6 +51,9 @@
           </div>
         </div>
       </div>
+      {% empty %}
+      <p class="text-center my-4 mx-auto">There are no unassigned leads at the moment </p>
+
       {% endfor %}
     </div>
 
@@ -97,7 +100,10 @@
       </div>
     </div>
     {% endfor %}
+    {% else %}
+    <p class="text-center my-4 mx-auto">There are no unassigned leads at the moment </p>
     {% endif %}
+
   </section>
 
 </section>

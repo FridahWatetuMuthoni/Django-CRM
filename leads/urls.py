@@ -15,6 +15,13 @@ urlpatterns = [
     path('category/details/<str:pk>/',
          views.CategoryDetailView.as_view(), name='category_detail'),
     path('category/update/<str:pk>/',
-         views.CategoryUpdateView.as_view(), name='category_update')
+         views.CategoryUpdateView.as_view(), name='category_update'),
+    path('<int:pk>/followups/create/',
+         views.FollowUpCreateView.as_view(), name='lead-followup-create'),
+    path('followups/<int:pk>/', views.FollowUpUpdateView.as_view(),
+         name='lead-followup-update'),
+    path('followups/<int:pk>/delete/',
+         views.FollowUpDeleteView.as_view(), name='lead-followup-delete'),
+
 
 ]

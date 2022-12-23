@@ -151,3 +151,11 @@ if READ_DOT_ENV_FILE:
 3. UNINSTALLING POSTGRESS
     1. brew uninstall postgresql
     2. cd Library and uninstall postgresql from there
+
+## MAKING A FILE AN EXECUTABLE IN MAC
+
+chmod +x runserver.sh
+
+## RUNNING SERVER USING GUNICORN
+
+1. gunicorn djcrm.wsgi

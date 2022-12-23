@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Lead, Agent, User, UserProfile, Category
+from .models import Lead, Agent, User, UserProfile, Category, FollowUp
 
 # customizing the site header
 admin.site.site_header = 'DJ-CRM DASHBOARD'
@@ -11,3 +11,4 @@ admin.site.register(Lead)
 admin.site.register(Agent)
 admin.site.register(UserProfile)
 admin.site.register(Category)
+admin.site.register(FollowUp)
