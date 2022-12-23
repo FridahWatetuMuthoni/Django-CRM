@@ -129,3 +129,25 @@ if READ_DOT_ENV_FILE:
         pip freeze > requirements.txt
 2. Installing Requirements
     pip install -r requirements.txt
+
+## POSTGRES DATABASE INSTALLATION AND CONFIGURATION
+
+1. MACOS
+    1. open the terminal
+    2. brew update
+    3. brew install postgresql
+    4. brew services restart postgresql@14
+    5. createuser -s postgres
+    6. psql postgres postgres
+    7. ALTER USER postgres WITH PASSWORD 'password';
+    8. install pyAdmin 4 and use the user and password above to login
+
+2. CREATING A USER USING THE VSCODE TERMINAL
+    1. psql postgres postgres
+    2. CREATE USER  djcrmuser WITH PASSWORD '7040';
+    3. GRANT ALL PRIVILEGES ON DATABASE djcrm TO djcrmuser;
+    4. exit psql shell \q
+
+3. UNINSTALLING POSTGRESS
+    1. brew uninstall postgresql
+    2. cd Library and uninstall postgresql from there

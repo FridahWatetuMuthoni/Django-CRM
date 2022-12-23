@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-6 mx-auto flex flex-wrap">
+  <div class="container px-5 pt-6 pb-2 mx-auto flex flex-wrap flex-col">
     <div class="mb-6 w-full py-6 flex items-center justify-between border-gray-200">
       <div>
         <h1 class="text-4xl text-gray-800">Leads</h1>
@@ -16,13 +16,15 @@
         </a>
       </div>
     </div>
-    <a href="{% url 'leads:categories' %}" class="my-6 text-indigo-500 inline-flex items-center">Categories
-      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-        <path d="M5 12h14M12 5l7 7-7 7"></path>
-      </svg>
-    </a>
-    <div class="flex flex-wrap -m-4">
+    <div>
+      <a href="{% url 'leads:categories' %}" class="my-6 text-indigo-500 inline-flex items-center">Categories
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="flex flex-wrap m-4">
       {% for lead in leads%}
       <div class="p-4 lg:w-1/2 md:w-full">
         <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
@@ -52,7 +54,6 @@
       {% endfor %}
     </div>
 
-  </div>
   </div>
 </section>
 <section class="text-gray-600 body-font">
@@ -101,3 +102,10 @@
 
 </section>
 {% endblock%}
+
+<a href="{% url 'leads:categories' %}" class="my-6 text-indigo-500 inline-flex items-center">Categories
+  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+    class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+    <path d="M5 12h14M12 5l7 7-7 7"></path>
+  </svg>
+</a>
